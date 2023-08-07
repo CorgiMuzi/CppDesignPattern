@@ -51,3 +51,29 @@ namespace AbstractFactoryMethod {
 		IArmor* getWearingArmor() { return this->wearingArmor; }
 	};
 }
+
+namespace Builder {
+	class Potion;
+
+	class Player {
+	public:
+		string name = "";
+		float hp = 100;
+		float atk = 8;
+		float speed = 100;
+		float def = 3;
+
+	public:
+		Player(const string& name, float hp, float atk, float speed, float def)
+			: name(name), hp(hp), atk(atk), speed(speed), def(def){
+			cout << name << " is online\n";
+		}
+		~Player() {
+			cout << name << " is offline\n";
+		}
+
+		void drinkPotion(Potion* potion);
+
+		void showPlayerStatus();
+	};
+}

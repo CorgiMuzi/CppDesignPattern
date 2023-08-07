@@ -1,30 +1,34 @@
-#include "AbstractFactoryMethod.h"
+#include "Builder.h"
 
 int main() {
-	Player* player = new Player("Corgi", 150, 13, Magician);
+	PotionBrewer* brewer = new PotionBrewer();
+	PotionBuilder* builder = new PotionBuilder();
 
-	Forge* forge = nullptr;
-	switch (player->getPlayerClass()) {
-	case Warrior:
-		forge = new WarriorForge();
-		break;
-	case Archer:
-		forge = new ArcherForge();
-		break;
-	case Magician:
-		forge = new MagicianForge();
-		break;
-	default:
-		forge = new WarriorForge();
-		break;
-	}
+	Player* player = new Player("Corgi", 100, 15, 10, 8);
 
-	IArmor* armor = forge->reforgingArmor("Dragon Leather",15 ,97);
+	brewer->set_builder(builder);
 
-	cout << armor->getDefStatInfo() << armor->getDurabilityInfo();
-	player->suitArmor(armor);
+	cout << "* Brewing <Full buff> potion\n";
+	brewer->brewingFullPotion();
 
-	delete armor;
-	delete forge;
+	Potion* potion = builder->getPotion();
+	potion->potionStatus();
+
+	delete potion;
+
+	cout << "* Brewing <HP buff> potion\n";
+	brewer->brewingHpPotion();
+
+	potion = builder->getPotion();
+	potion->potionStatus();
+	
+	cout << "+ Before drinking potion +\n";
+	player->showPlayerStatus();
+	player->drinkPotion(potion);
+	cout << "+ After drinking potion +\n";
+	player->showPlayerStatus();
+	delete potion;
 	delete player;
+	delete builder;
+	delete brewer;
 }

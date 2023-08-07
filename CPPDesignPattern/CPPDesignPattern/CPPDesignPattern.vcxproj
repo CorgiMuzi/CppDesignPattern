@@ -128,12 +128,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractFactoryMethod.cpp" />
+    <ClCompile Include="Builder.cpp" />
+    <ClCompile Include="Potion.h" />
     <ClCompile Include="FactoryMethod.cpp" />
     <ClCompile Include="GameMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactoryMethod.h" />
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Buff.h" />
+    <ClInclude Include="Builder.h" />
     <ClInclude Include="FactoryMethod.h" />
     <ClInclude Include="Forge.h" />
     <ClInclude Include="IOBase.h" />

@@ -24,6 +24,12 @@
     <ClCompile Include="AbstractFactoryMethod.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Potion.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Builder.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FactoryMethod.h">
@@ -48,6 +54,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Forge.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Builder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
