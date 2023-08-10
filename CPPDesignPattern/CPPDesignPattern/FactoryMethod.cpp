@@ -1,7 +1,7 @@
 #include "FactoryMethod.h"
 
 namespace FactoryMethod {
-	MonsterSpawner::~MonsterSpawner() {
+	IMonsterSpawner::~IMonsterSpawner() {
 		cout << " get destroyed\n";
 	}
 
@@ -9,7 +9,7 @@ namespace FactoryMethod {
 		cout << "Goblin spawner";
 	}
 
-	IMonster* GoblinSpawner::SpawnMonster(const string& name, float hp, float atk) {
+	IMonster* GoblinSpawner::spawnMonster(const string& name, float hp, float atk) {
 		return new Goblin(name, hp, atk);
 	}
 
@@ -17,7 +17,7 @@ namespace FactoryMethod {
 		cout << "Skeleton spawner";
 	}
 
-	IMonster* SkeletonSpawner::SpawnMonster(const string& name, float hp, float atk) {
+	IMonster* SkeletonSpawner::spawnMonster(const string& name, float hp, float atk) {
 		return new Skeleton(name, hp, atk);
 	}
 

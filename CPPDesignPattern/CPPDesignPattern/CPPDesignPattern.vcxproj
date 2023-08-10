@@ -132,6 +132,7 @@
     <ClCompile Include="Potion.h" />
     <ClCompile Include="FactoryMethod.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="Prototype.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactoryMethod.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterSpawner.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Prototype.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

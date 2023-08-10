@@ -1,34 +1,23 @@
-#include "Builder.h"
+#include "Prototype.h"
 
 int main() {
-	PotionBrewer* brewer = new PotionBrewer();
-	PotionBuilder* builder = new PotionBuilder();
+	ZombieSpawner* zombieSpawner = new ZombieSpawner();
 
-	Player* player = new Player("Corgi", 100, 15, 10, 8);
+	IMonster* zombie = zombieSpawner->spawnMonster(100, 15);
+	zombie->setSpeed(41);
 
-	brewer->set_builder(builder);
+	vector<IMonster*> zombies;
+	zombies.push_back(zombie);
 
-	cout << "* Brewing <Full buff> potion\n";
-	brewer->brewingFullPotion();
+	for (int unit = 0; unit < 4; ++unit) {
+		zombies.push_back(zombieSpawner->spawnMonster(*zombie));
+	}
 
-	Potion* potion = builder->getPotion();
-	potion->potionStatus();
+	cout << "\n";
 
-	delete potion;
-
-	cout << "* Brewing <HP buff> potion\n";
-	brewer->brewingHpPotion();
-
-	potion = builder->getPotion();
-	potion->potionStatus();
-	
-	cout << "+ Before drinking potion +\n";
-	player->showPlayerStatus();
-	player->drinkPotion(potion);
-	cout << "+ After drinking potion +\n";
-	player->showPlayerStatus();
-	delete potion;
-	delete player;
-	delete builder;
-	delete brewer;
+	for (vector<IMonster*>::size_type unit = 0; unit < zombies.size(); ++unit) {
+		if (unit == 0) cout << "[prototype]\n";
+		else cout << "[clone]\n";
+		zombies[unit]->showStatus();
+	}
 }

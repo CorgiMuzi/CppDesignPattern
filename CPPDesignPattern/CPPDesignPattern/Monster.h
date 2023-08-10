@@ -38,3 +38,36 @@ namespace FactoryMethod {
 		string& getName() override { return this->name; }
 	};
 };
+
+namespace Prototype {
+	class IMonster {
+	protected:
+		float hp = 100.0f;
+		float atk = 5.0f;
+		float speed = 15.0f;
+
+	public:
+		IMonster(float hp, float atk) : hp(hp), atk(atk) {}
+		~IMonster() {};
+		virtual IMonster* clone() = 0;
+		virtual void setSpeed(float speed) { this->speed = speed; }
+		virtual void showStatus() {
+			cout << "Empty monster\n";
+		}
+	};
+
+	class Zombie : public IMonster {
+	public:
+		Zombie(float hp, float atk)
+			: IMonster(hp, atk) { cout << "Zombie created\n"; }
+		~Zombie() { cout << "Zombie object has destroyed\n"; }
+
+		IMonster* clone() override {
+			return new Zombie(*this);
+		}
+
+		void setSpeed(float speed) { this->speed = speed; }
+
+		void showStatus() override;
+	};
+}

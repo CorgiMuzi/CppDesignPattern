@@ -3,25 +3,44 @@
 #include "Monster.h"
 
 namespace FactoryMethod {
-	class MonsterSpawner {
+	class IMonsterSpawner {
 	private:
 	public:
-		MonsterSpawner() {}
-		virtual ~MonsterSpawner() = 0;
-		virtual IMonster* SpawnMonster(const string& name, float hp, float atk) = 0;
+		IMonsterSpawner() {}
+		virtual ~IMonsterSpawner() = 0;
+		virtual IMonster* spawnMonster(const string& name, float hp, float atk) = 0;
 	};
 
-	class GoblinSpawner : public MonsterSpawner {
+	class GoblinSpawner : public IMonsterSpawner {
 	private:
 	public:
 		~GoblinSpawner() override;
-		IMonster* SpawnMonster(const string& name, float hp, float atk);
+		IMonster* spawnMonster(const string& name, float hp, float atk);
 	};
 
-	class SkeletonSpawner : public MonsterSpawner {
+	class SkeletonSpawner : public IMonsterSpawner {
 	private:
 	public:
 		~SkeletonSpawner() override;
-		IMonster* SpawnMonster(const string& name, float hp, float atk);
+		IMonster* spawnMonster(const string& name, float hp, float atk);
+	};
+}
+
+namespace Prototype {
+	class IMonsterSpawner {
+	protected:
+		IMonsterSpawner() {}
+		~IMonsterSpawner() {};
+	public:
+		virtual IMonster* spawnMonster(IMonster&) = 0;
+	};
+
+	class ZombieSpawner : public IMonsterSpawner{
+	private:
+		~ZombieSpawner() { cout << "Zombie spawner has destroyed\n"; }
+	public:
+		IMonster* spawnMonster(float hp, float atk);
+		IMonster* spawnMonster(IMonster&) override;
+		void zombieBehaviour() {}
 	};
 }
