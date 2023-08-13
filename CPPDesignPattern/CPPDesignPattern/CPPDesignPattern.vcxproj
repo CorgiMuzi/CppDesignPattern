@@ -133,6 +133,7 @@
     <ClCompile Include="FactoryMethod.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Prototype.cpp" />
+    <ClCompile Include="Singleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactoryMethod.h" />
@@ -141,11 +142,14 @@
     <ClInclude Include="Builder.h" />
     <ClInclude Include="FactoryMethod.h" />
     <ClInclude Include="Forge.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="IOBase.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterSpawner.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Prototype.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,23 +1,39 @@
-#include "Prototype.h"
+#include "Singleton.h"
 
 int main() {
-	ZombieSpawner* zombieSpawner = new ZombieSpawner();
+	PlayerDB* playerDB = PlayerDB::GetInstance();
+	Player* player = playerDB->getSavedPlayer();
+	Shop* shop = new Shop(15, 30);
 
-	IMonster* zombie = zombieSpawner->spawnMonster(100, 15);
-	zombie->setSpeed(41);
+	player->showPlayerInfo();
 
-	vector<IMonster*> zombies;
-	zombies.push_back(zombie);
+	cout << "\n[~] Creating new player...\n";
 
-	for (int unit = 0; unit < 4; ++unit) {
-		zombies.push_back(zombieSpawner->spawnMonster(*zombie));
-	}
+	player = new Player("Corgi", 150);
+	player->showPlayerInfo();
+	PlayerDB::SavePlayer(player);
 
-	cout << "\n";
+	delete player;
 
-	for (vector<IMonster*>::size_type unit = 0; unit < zombies.size(); ++unit) {
-		if (unit == 0) cout << "[prototype]\n";
-		else cout << "[clone]\n";
-		zombies[unit]->showStatus();
-	}
+	player = playerDB->getSavedPlayer();
+	player->showPlayerInfo();
+
+	shop->buyHpPotion(player);
+
+	player->showPlayerInfo();
+
+	PlayerDB::SavePlayer(player);
+
+	delete player;
+
+	player = playerDB->getSavedPlayer();
+	player->showPlayerInfo();
+
+	shop->buyBuffPotion(player);
+	player->showPlayerInfo();
+
+	delete player;
+
+	player = playerDB->getSavedPlayer();
+	player->showPlayerInfo();
 }

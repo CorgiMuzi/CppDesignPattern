@@ -77,3 +77,25 @@ namespace Builder {
 		void showPlayerStatus();
 	};
 }
+
+namespace Singleton {
+	class Player {
+	private:
+		string name = "";
+		int gold = 100;
+
+	public:
+		int hpPotionAmount = 0;
+		int buffPotionAmount = 0;
+
+	public:
+		Player();
+		Player(const string& name, int gold);
+		~Player() { cout << "\n[!] " << this->name << " has signed out.\n"; }
+
+		void showPlayerInfo();
+		bool payGold(int cost);
+		void gainGold(int gold);
+		string getPlayerName() { return this->name; }
+	};
+}
