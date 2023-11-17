@@ -26,14 +26,24 @@ int main() {
 
 	delete player;
 
-	player = playerDB->getSavedPlayer();
+	cout << "\n[*] Refer new DB and save player info in it.\n";
+
+	PlayerDB* newPlayerDB = PlayerDB::GetInstance();
+
+	player = newPlayerDB->getSavedPlayer();
 	player->showPlayerInfo();
 
 	shop->buyBuffPotion(player);
 	player->showPlayerInfo();
+	PlayerDB::SavePlayer(player);
 
 	delete player;
 
+	cout << "\n[*] Now, try to get player info from original DB\n";
+
 	player = playerDB->getSavedPlayer();
 	player->showPlayerInfo();
+
+	delete playerDB;
+	delete player;
 }

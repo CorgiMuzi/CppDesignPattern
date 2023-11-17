@@ -14,7 +14,7 @@ namespace Singleton {
 		PlayerDB() {}
 
 	public:
-		~PlayerDB() {};
+		~PlayerDB() {}
 		static PlayerDB* GetInstance();
 		static void SavePlayer(Player* player);
 		Player* getSavedPlayer();

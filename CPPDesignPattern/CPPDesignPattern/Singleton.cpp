@@ -8,6 +8,9 @@ namespace Singleton {
 			cout << "Game operated.\n";
 			instance = new PlayerDB();
 		}
+		else {
+			cout << "\n[#] Already game operated.\n";
+		}
 
 		return instance;
 	}
