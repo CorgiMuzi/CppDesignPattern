@@ -1,7 +1,8 @@
 #pragma once
 #include "IOBase.h"
 
-namespace AbstractFactoryMethod {
+namespace AbstractFactoryMethod
+{
 	enum PlayerClass;
 
 	class IArmor {
@@ -10,9 +11,11 @@ namespace AbstractFactoryMethod {
 		string name;
 		float defStat = 0;
 		float durability = 100.0f;
+
 	public:
 		IArmor(const PlayerClass& armorClass, const string& name, float defStat, float durability)
-			: armorClass(armorClass), name(name), defStat(defStat), durability(durability) {}
+			: armorClass(armorClass), name(name), defStat(defStat), durability(durability) {
+		}
 		~IArmor() { cout << this->name << " has destroyed\n"; }
 		virtual string getDurabilityInfo() = 0;
 		virtual string getDefStatInfo() = 0;
@@ -23,7 +26,8 @@ namespace AbstractFactoryMethod {
 	class WarriorArmor : public IArmor {
 	public:
 		WarriorArmor(const string& name, float defStat, float durability = 100)
-			: IArmor(Warrior, name, defStat, durability) {}
+			: IArmor(Warrior, name, defStat, durability) {
+		}
 		string getDurabilityInfo();
 		string getDefStatInfo();
 	};
@@ -31,7 +35,8 @@ namespace AbstractFactoryMethod {
 	class ArcherArmor : public IArmor {
 	public:
 		ArcherArmor(const string& name, float defStat, float durability = 100)
-			: IArmor(Archer, name, defStat, durability) {}
+			: IArmor(Archer, name, defStat, durability) {
+		}
 		string getDurabilityInfo();
 		string getDefStatInfo();
 	};
@@ -39,7 +44,8 @@ namespace AbstractFactoryMethod {
 	class MagicianArmor : public IArmor {
 	public:
 		MagicianArmor(const string& name, float defStat, float durability = 100)
-			: IArmor(Magician, name, defStat, durability) {}
+			: IArmor(Magician, name, defStat, durability) {
+		}
 		string getDurabilityInfo();
 		string getDefStatInfo();
 	};

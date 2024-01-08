@@ -1,4 +1,4 @@
-#include "Prototype.h"
+#include "Headers/Prototype.h"
 
 namespace Prototype {
 	void Zombie::showStatus() {

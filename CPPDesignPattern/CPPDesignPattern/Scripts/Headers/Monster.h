@@ -1,7 +1,8 @@
 #pragma once
 #include "IOBase.h"
 
-namespace FactoryMethod {
+namespace FactoryMethod
+{
 	class Player;
 
 	class IMonster {
@@ -39,7 +40,8 @@ namespace FactoryMethod {
 	};
 };
 
-namespace Prototype {
+namespace Prototype
+{
 	class IMonster {
 	protected:
 		float hp = 100.0f;
@@ -71,3 +73,46 @@ namespace Prototype {
 		void showStatus() override;
 	};
 }
+
+namespace Adapter
+{
+	class IMinion {
+	protected:
+		string name;
+		float atk;
+		float hp;
+
+	public:
+		IMinion() : name("Minion"), atk(0.3f), hp(10.0f) {}
+		IMinion(string _name, float _atk, float _hp) : name(_name), atk(_atk), hp(_hp) {}
+	};
+
+	class ClubMinion : IMinion {
+	private:
+		string clubName;
+
+	public:
+		ClubMinion() : IMinion(), clubName("Wooden Club") {}
+		ClubMinion(string _name, float _atk, float _hp, string _clubName = "Wooden Club") : IMinion(_name, _atk, _hp), clubName(_clubName) {}
+	};
+
+	class ICreep {
+	protected:
+		string name;
+		float atk;
+		float hp;
+
+	public:
+		ICreep() : name("Minion"), atk(0.3f), hp(10.0f) {}
+		ICreep(string _name, float _atk, float _hp) : name(_name), atk(_atk), hp(_hp) {}
+	};
+
+	class ClubCreep : ICreep {
+	private:
+		string clubName;
+
+	public:
+		ClubCreep() : ICreep(), clubName("Wooden Club") {}
+		ClubCreep(string _name, float _atk, float _hp, string _clubName = "Wooden Club") : ICreep(_name, _atk, _hp), clubName(_clubName) {}
+	};
+};

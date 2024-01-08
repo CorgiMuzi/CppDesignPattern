@@ -19,7 +19,6 @@ namespace FactoryMethod {
 		void attack(IMonster* monster);
 		void getDamage(float dmg);
 		string& getName();
-		
 	};
 }
 
@@ -97,5 +96,23 @@ namespace Singleton {
 		bool payGold(int cost);
 		void gainGold(int gold);
 		string getPlayerName() { return this->name; }
+	};
+}
+
+namespace Adpater
+{
+	class IMinion;
+	
+	class Player {
+	private:
+		string name;
+		float atk;
+		float hp;
+
+	public:
+		Player() : name("Guest"), atk(1.0f), hp(100.0f) {}
+		Player(string _name, float _atk, float _hp) : name(_name), atk(_atk), hp(_hp) {}
+		string GetPlayerName() { return name; }
+		void FireBlade(IMinion minion);
 	};
 }

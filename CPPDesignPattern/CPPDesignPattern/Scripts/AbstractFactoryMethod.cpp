@@ -1,4 +1,4 @@
-#include "AbstractFactoryMethod.h"
+#include "Headers/AbstractFactoryMethod.h"
 
 namespace AbstractFactoryMethod {
 	string WarriorArmor::getDurabilityInfo() {
