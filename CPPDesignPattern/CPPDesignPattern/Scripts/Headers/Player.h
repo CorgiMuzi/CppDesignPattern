@@ -99,7 +99,7 @@ namespace Singleton {
 	};
 }
 
-namespace Adpater
+namespace Adapter
 {
 	class IMinion;
 	
@@ -110,9 +110,9 @@ namespace Adpater
 		float hp;
 
 	public:
-		Player() : name("Guest"), atk(1.0f), hp(100.0f) {}
-		Player(string _name, float _atk, float _hp) : name(_name), atk(_atk), hp(_hp) {}
-		string GetPlayerName() { return name; }
-		void FireBlade(IMinion minion);
+		Player(string _name = "Guest", float _atk = 1.0f, float _hp = 100.0f) : name(_name), atk(_atk), hp(_hp) { cout << _name << " has singed in\n"; }
+		~Player() { cout << name << " has signed out\n"; }
+		string& GetPlayerName() { return name; }
+		void FireBlade(IMinion* minion);
 	};
 }
